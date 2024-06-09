@@ -69,6 +69,7 @@ public class GameData implements Runnable
 	private Countdowner countdowner;
 	
 	private boolean sayFunc;
+	private SoundEffect soundEffect;
 	
 	public GameData(Graphwar graphwar)
 	{
@@ -102,6 +103,8 @@ public class GameData implements Runnable
 		countdowner = null;
 		
 		sayFunc = true;
+		soundEffect = new SoundEffect();
+
 	}
 	
 	public void connect(String ip, int port) throws IOException
@@ -943,9 +946,10 @@ public class GameData implements Runnable
 				
 				this.drawingFunction = true;
 				this.timeStartedDrawingFunction = System.currentTimeMillis();	
-			
+
 				((GameScreen)graphwar.getUI().getScreen(Constants.GAME_SCREEN)).startDrawingFunction();
-								
+				soundEffect.playSound("/rsc/sounds/zap.wav");
+		
 				if(sayFunc)
 				{
 					((GameScreen)graphwar.getUI().getScreen(Constants.GAME_SCREEN)).addChat(player, function);
@@ -1065,6 +1069,7 @@ public class GameData implements Runnable
 				{
 					soldier.setExploding(true);
 					soldier.setAlive(false);
+					soundEffect.playSound("/rsc/sounds/boom.wav");			
 				}
 			}
 		}
