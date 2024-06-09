@@ -245,6 +245,7 @@ public class GraphPlane extends JPanel implements ActionListener
 			repaintBack = false;
 		}
 		
+		//Drawing the background from BackGame.png ?
 		g.drawImage(background, 0, 0, null);
 	//	else
 	//	{
@@ -265,6 +266,7 @@ public class GraphPlane extends JPanel implements ActionListener
 	//	timeFinishedLastPaint = System.currentTimeMillis();
 	}
 		
+	//Draws the obstacles
 	private void drawBackground(Graphics2D g, boolean reversed)
 	{
 		if(reversed)
@@ -280,6 +282,19 @@ public class GraphPlane extends JPanel implements ActionListener
 		
 		g.drawLine(0, Constants.PLANE_HEIGHT/2, Constants.PLANE_LENGTH, Constants.PLANE_HEIGHT/2);
 		g.drawLine(Constants.PLANE_LENGTH/2, 0, Constants.PLANE_LENGTH/2, Constants.PLANE_HEIGHT);
+
+		boolean showGrid = graphwar.getGameData().getShowGrid();
+
+		//Drawing the grid if necessary
+		if(showGrid){
+			for(int i = 1; i < 10+1; i++){
+				g.drawLine(i*Constants.PLANE_LENGTH/10, 0, i*Constants.PLANE_LENGTH/10, Constants.PLANE_HEIGHT);
+			}
+			for(int i = 1; i < 6+1; i++){
+				g.drawLine(0, i*Constants.PLANE_HEIGHT/6, Constants.PLANE_LENGTH, i*Constants.PLANE_HEIGHT/6);
+			}
+		}
+
 	}
 	
 	public void startDrawingFunction()

@@ -49,6 +49,7 @@ public class GameScreen extends JPanel implements ActionListener, StartStopPanel
 	private JLabel ddyImg;
 	
 	private GraphButton fire;
+	private GraphButton grid;
 	private GraphButton quit;
 	private GraphButton global;	
 	private JTextField funcField;	
@@ -96,6 +97,7 @@ public class GameScreen extends JPanel implements ActionListener, StartStopPanel
 			dyImg = GraphUtil.makeBackgroundImage(graphwar, read);
 			ddyImg = GraphUtil.makeBackgroundImage(graphwar, read);
 			fire = GraphUtil.makeButton(graphwar, read);
+			grid = GraphUtil.makeButton(graphwar, read);
 			quit = GraphUtil.makeButton(graphwar, read);
 			global = GraphUtil.makeButton(graphwar, read);			
 			funcField = GraphUtil.makeTextField(read);			
@@ -116,6 +118,7 @@ public class GameScreen extends JPanel implements ActionListener, StartStopPanel
 			components.push(ddyImg);
 			components.push(angleDisplay);
 			components.push(fire);
+			components.push(grid);
 			components.push(quit);
 			components.push(global);
 			components.push(plane);
@@ -125,6 +128,7 @@ public class GameScreen extends JPanel implements ActionListener, StartStopPanel
 			components.push(timer);
 			
 			this.fire.addActionListener(this);
+			this.grid.addActionListener(this);
 			this.quit.addActionListener(this);
 			this.global.addActionListener(this);
 			this.funcField.addActionListener(this);
@@ -413,6 +417,11 @@ public class GameScreen extends JPanel implements ActionListener, StartStopPanel
 			if(arg0.getSource()==quit)
 			{
 				this.showQuit(true);
+				this.repaint();
+			}
+			else if(arg0.getSource()==grid){
+				System.out.print("Hello word");
+				graphwar.getGameData().setShowGrid(!graphwar.getGameData().getShowGrid());
 				this.repaint();
 			}
 			else if(arg0.getSource()==chatField)

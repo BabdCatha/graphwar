@@ -46,6 +46,12 @@
 115
 500
 
+/rsc/fire.png
+/rsc/fireOverRed.png
+/rsc/smallMask.png
+290
+500
+
 /rsc/quit.png
 /rsc/quitOver.png
 /rsc/smallMask.png

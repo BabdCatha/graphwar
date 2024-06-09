@@ -58,6 +58,8 @@ public class GameData implements Runnable
 	private boolean exploding;
 	private long timeStartedExploding;
 	private ArrayList<Soldier> soldiersHit;
+
+	private boolean showGrid;
 	
 	private boolean angleUp;
 	private boolean angleDown;
@@ -81,6 +83,8 @@ public class GameData implements Runnable
 		
 		gameMode = Constants.NORMAL_FUNC;
 		gameState = Constants.NONE;
+
+		showGrid = false;
 		
 		function = null;
 		drawingFunction = false;
@@ -124,6 +128,14 @@ public class GameData implements Runnable
 	public List<Player> getPlayers()
 	{
 		return players;
+	}
+
+	public boolean getShowGrid(){
+		return showGrid;
+	}
+
+	public void setShowGrid(boolean showGrid){
+		this.showGrid = showGrid;
 	}
 	
 	public Player getPlayer(int playerID)
